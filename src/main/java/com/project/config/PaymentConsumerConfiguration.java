@@ -3,6 +3,7 @@ package com.project.config;
 import com.project.event.OrderEvent;
 import com.project.event.OrderStatus;
 import com.project.event.PaymentEvent;
+import com.project.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
