@@ -64,4 +64,16 @@ public class PaymentService {
 
     }
 
+    @Transactional
+    public void cancelOrderEvent(OrderEvent orderEvent) {
+
+        userTransactionRepository.findById(orderEvent.getOrderRequestDto().getOrderId())
+                .ifPresent(ut->{
+                    userTransactionRepository.delete(ut);
+                    userTransactionRepository.findById(ut.getUserId())
+                            .ifPresent(ub->ub.setAmount(ub.getAmount() + ut.getAmount()));
+                });
+
+    }
+
 }
